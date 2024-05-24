@@ -1,0 +1,43 @@
+<html>
+<head>
+<title>
+car details
+</title>
+</head>
+<?php
+$server="localhost";
+$user="root";
+$password="";
+$dbname="test";
+$conn=new mysqli($server,$user,$password,$dbname);
+if(!$conn)
+{
+die("failed");
+}
+if(isset($_POST['submit']))
+{
+ if(isset($_POST['fname']))
+$name=$_POST['fname'];
+if(isset($_POST['num']))
+$ame=$_POST['num'];
+if(isset($_POST['date']))
+$me=$_POST['date'];
+if(isset($_POST['date1']))
+$e=$_POST['date1'];
+$querry="Insert into car(name,model,mdate,pdate) values('$name','$ame','$me','$e')";
+if(mysqli_query($conn,$querry))
+{
+echo "<script>alert('Data stored sucessfully')</script>";
+}
+}
+?>
+<body>
+<center>
+<form method="POST">
+Car Name:<input type="text" name="fname"><br><br>
+Model Number:<input type="text" name="num"><br><br>
+date of manufacture:<input type="date" name="date"><br><br>
+date of purchace:<input type="date" name="date1"><br><br>
+<input type="submit" name="submit" value="SUBMIT">
+</form>
+</center>
